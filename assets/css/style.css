@@ -25,6 +25,7 @@ html {
 body {
   height: 100%;
   font-family: "Commissioner", sans-serif;
+  scroll-behavior: smooth;
 }
 
 main {
@@ -75,6 +76,17 @@ hr {
     rgba(0, 0, 0, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
+
+.projectBrief,
+.campaignDetails {
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  transform: translateY(-50px);
 }
 
 /**navbar*/
@@ -134,15 +146,6 @@ nav .content {
 }
 
 /**project brief*/
-.projectBrief {
-  background-color: #fff;
-  border-radius: 10px;
-  max-width: 720px;
-  width: 100%;
-  margin: 0 auto;
-
-  transform: translateY(-50px);
-}
 
 .projectBrief .content {
   width: 90%;
@@ -238,7 +241,75 @@ nav .content {
   fill: #fff;
 }
 
-@media only screen and (max-width: 810px) {
+/**campaignDetails*/
+
+.campaignDetails {
+  padding: 3em;
+}
+
+.campaignDetails .content {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.allMetrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /*relative to after element*/
+  position: relative;
+}
+
+.metric:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  height: 60px;
+  width: 1px;
+  right: 1.5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ccc;
+}
+
+.currentAmount {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.extraInfo {
+  color: var(--Dark_gray);
+  text-align: center;
+}
+
+.progressBar {
+  background-color: #eee;
+  border-radius: 50px;
+  width: 100%;
+  height: 12px;
+  margin-top: 20px;
+}
+
+.percentageBar {
+  background-color: var(--Moderate_cyan);
+  border-radius: 50px;
+  height: 100%;
+  width: 0;
+}
+
+@media only screen and (max-width: 662px) {
+  .projectBrief,
+  .campaignDetails {
+    max-width: 90%;
+  }
+
+  /**navbar*/
   nav {
     background-image: url("../images/image-hero-mobile.webp");
     background-size: cover;
@@ -259,9 +330,7 @@ nav .content {
     display: initial;
   }
 
-  .projectBrief {
-    max-width: 90%;
-  }
+  /**project brief*/
   .actionsArea {
     justify-content: center;
   }
@@ -271,5 +340,21 @@ nav .content {
 
   .bookmarkStatus {
     display: none;
+  }
+
+  /**campaignDetails*/
+  .metric {
+    margin: 20px;
+    align-items: center;
+  }
+
+  .metric:not(:last-child)::after {
+    height: 1px;
+    width: 50px;
+    top: initial;
+    right: initial;
+    bottom: -10px;
+    transform: initial;
+    transform: translateY(10px);
   }
 }
