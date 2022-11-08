@@ -1,17 +1,16 @@
-let openMenuBtn = document.querySelector(".openMenuBtn");
-let closeMenuBtn = document.querySelector(".closeMenuBtn");
-let sideMenuBtnsContainer = document.querySelector(".sideMenuBtnsContainer");
-let cover = document.querySelector(".cover");
-openMenuBtn.addEventListener("click", () => {
-  cover.classList.toggle("invisible");
-  openMenuBtn.classList.toggle("invisible");
-  closeMenuBtn.classList.toggle("invisible");
-  sideMenuBtnsContainer.classList.toggle("invisible");
-});
-closeMenuBtn.addEventListener("click", () => {
-  cover.classList.toggle("invisible");
+const DomManipulation = (function () {
+  const openMenuBtn = document.querySelector(".openMenuBtn");
+  const closeMenuBtn = document.querySelector(".closeMenuBtn");
+  const sideMenuBtnsContainer = document.querySelector(".sideMenuBtnsContainer");
+  const cover = document.querySelector(".cover");
 
-  openMenuBtn.classList.toggle("invisible");
-  closeMenuBtn.classList.toggle("invisible");
-  sideMenuBtnsContainer.classList.toggle("invisible");
-});
+  const openSideMenuEventHandler = () => {
+    cover.classList.toggle("invisible");
+    sideMenuBtnsContainer.classList.toggle("invisible");
+    openMenuBtn.classList.toggle("invisible");
+    closeMenuBtn.classList.toggle("invisible");
+  };
+
+  openMenuBtn.addEventListener("click", openSideMenuEventHandler);
+  closeMenuBtn.addEventListener("click", openSideMenuEventHandler);
+})();
