@@ -30,21 +30,31 @@ let daysLeft = 56;
 let remaining = val - pledges;
 let percentage = (pledges / val) * 100;
 
+
 let moneyCount = document.querySelector(".moneyCount .currentAmount");
 let backersCount = document.querySelector(".backersCount .currentAmount");
 let percentageBar = document.querySelector(".percentageBar");
 
-window.onload = function () {
-  anime
-    .timeline({
-      duration: 750,
-      easing: "cubicBezier(0.000, 0.000, 0.580, 1.000)",
-      easing: "linear",
-
-      round: 1,
-    })
-    .add({ targets: moneyCount, textContent: `$${[pledges]}` }, 0)
-    .add({ targets: backersCount, textContent: `${backers}` }, 0)
-    .add({ targets: percentageBar, width: `${percentage}%` }, 0);
+let options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.3,
 };
+const callback = function (entries) {
+  if (entries[0].isIntersecting == true) {
+    anime
+      .timeline({
+        duration: 1000,
+        easing: "cubicBezier(0.000, 0.000, 0.580, 1.000)",
+        easing: "linear",
 
+        round: 1,
+      })
+      .add({ targets: moneyCount, textContent: `$${[pledges]}` }, 0)
+      .add({ targets: backersCount, textContent: `${backers}` }, 0)
+      .add({ targets: percentageBar, width: `${percentage}%` }, 0);
+  }
+};
+let target = document.querySelector(".campaignDetails");
+let observer = new IntersectionObserver(callback, options);
+observer.observe(target);

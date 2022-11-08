@@ -8,6 +8,8 @@
 html {
   box-sizing: border-box;
   height: 100%;
+  scroll-behavior: smooth;
+
 }
 *,
 *:before,
@@ -25,7 +27,6 @@ html {
 body {
   height: 100%;
   font-family: "Commissioner", sans-serif;
-  scroll-behavior: smooth;
 }
 
 main {
