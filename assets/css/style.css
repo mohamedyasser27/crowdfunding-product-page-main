@@ -79,7 +79,7 @@ hr {
 
 /**navbar*/
 nav {
-  background: url("../images/image-hero-desktop.jpg") no-repeat top left;
+  background: url("../images/image-hero-desktop.webp") no-repeat top left;
   background-size: 100% 100%;
   height: 400px;
 }
@@ -236,7 +236,7 @@ nav .content {
 
 @media only screen and (max-width: 810px) {
   nav {
-    background-image: url("../images/image-hero-mobile.jpg");
+    background-image: url("../images/image-hero-mobile.webp");
     background-size: cover;
     background-size: 100% 100%;
     height: 300px;
