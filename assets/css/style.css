@@ -23,4 +23,129 @@ html {
 
 body {
   height: 100%;
+  font-family: "Commissioner", sans-serif;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.resetBtnStyle {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.invisible {
+  display: none !important;
+}
+
+.cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: rgb(0, 0, 0);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2) 61%,
+    rgba(0, 0, 0, 0.75) 98%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2) 61%,
+    rgba(0, 0, 0, 0.75) 98%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2) 61%,
+    rgba(0, 0, 0, 0.75) 98%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
+
+nav {
+  background: url("../images/image-hero-desktop.jpg") no-repeat top left;
+  background-size: 100% 100%;
+  height: 400px;
+}
+
+nav .content {
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 70px;
+  display: flex;
+  align-items: center;
+  /*relativ to side menu*/
+  position: relative;
+}
+
+.navBtnsContainer,
+.openMenuBtn,
+.closeMenuBtn {
+  margin-left: auto;
+}
+
+.navBtn {
+  color: #fff;
+  margin-left: 30px;
+}
+
+.openMenuBtn,
+.closeMenuBtn {
+  display: none;
+  cursor: pointer;
+}
+.closeMenuBtn {
+  position: relative;
+  z-index: 2;
+}
+
+.sideMenuBtnsContainer {
+  background-color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  top: 75px;
+  z-index: 2;
+}
+
+.sideMenuBtn {
+  padding: 25px;
+  text-align: start;
+  font-weight: 500;
+}
+
+hr {
+  height: 1px;
+  background-color: #ccc;
+  border: none;
+}
+
+@media only screen and (max-width: 810px) {
+  nav {
+    background-image: url("../images/image-hero-mobile.jpg");
+    background-size: cover;
+    background-size: 100% 100%;
+    height: 300px;
+  }
+  nav .content {
+    padding-top: 30px;
+    width: 90%;
+  }
+
+  .navBtnsContainer {
+    display: none;
+  }
+
+  .openMenuBtn,
+  .closeMenuBtn {
+    display: initial;
+  }
 }
