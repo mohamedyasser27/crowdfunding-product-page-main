@@ -163,7 +163,7 @@ nav .content {
 }
 
 .projectName {
-  font-size:calc( 1rem + 1vw);
+  font-size: calc(1rem + 1vw);
   font-weight: 700;
 }
 
@@ -227,10 +227,14 @@ nav .content {
   z-index: 1;
 }
 
-.bookmarkIcon:hover {
+.bookmarkBtn.bookmarked + .bookmarkStatus {
   color: var(--Dark_cyan);
 }
-.bookmarkIcon:hover path {
+
+.bookmarkBtn.bookmarked .bookmarkIcon {
+  color: var(--Dark_cyan);
+}
+.bookmarkBtn.bookmarked .bookmarkIcon path {
   fill: #fff;
 }
 
@@ -255,16 +259,15 @@ nav .content {
     display: initial;
   }
 
-
-  .projectBrief{
+  .projectBrief {
     max-width: 90%;
   }
   .actionsArea {
     justify-content: center;
   }
-.bookmarkArea{
+  .bookmarkArea {
     transform: translateX(0);
-}
+  }
 
   .bookmarkStatus {
     display: none;
