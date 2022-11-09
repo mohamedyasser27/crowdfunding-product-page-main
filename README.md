@@ -47,8 +47,13 @@ Users should be able to:
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
+- Intersection Observer
 
 ### What I learned
+
+- using intersection Observer to fire events(Animation) when a certain elements appear
+- using filter:opacity to add the disabled effect to UI Elements
+- using animejs to create Animations
 
 ### Continued development
 

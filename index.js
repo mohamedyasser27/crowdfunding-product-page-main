@@ -1,11 +1,13 @@
 import anime from "./anime.es.js";
 
 const DomManipulation = (function () {
+  let bookmarked = false;
   const openMenuBtn = document.querySelector(".openMenuBtn");
   const closeMenuBtn = document.querySelector(".closeMenuBtn");
   const sideMenuBtnsContainer = document.querySelector(
     ".sideMenuBtnsContainer"
   );
+  let bookmarkStatus = document.querySelector(".bookmarkStatus");
   const cover = document.querySelector(".cover");
   let bookmarkBtn = document.querySelector(".bookmarkBtn");
   const openSideMenuEventHandler = () => {
@@ -20,6 +22,8 @@ const DomManipulation = (function () {
 
   bookmarkBtn.addEventListener("click", () => {
     bookmarkBtn.classList.toggle("bookmarked");
+    bookmarkStatus.textContent = bookmarked ? "bookmark" : "bookmarked";
+    bookmarked=!bookmarked
   });
 })();
 
@@ -29,7 +33,6 @@ let backers = 5007;
 let daysLeft = 56;
 let remaining = val - pledges;
 let percentage = (pledges / val) * 100;
-
 
 let moneyCount = document.querySelector(".moneyCount .currentAmount");
 let backersCount = document.querySelector(".backersCount .currentAmount");
@@ -54,7 +57,7 @@ const callback = function (entries) {
       .add({ targets: moneyCount, textContent: `$${[pledges]}` }, 0)
       .add({ targets: backersCount, textContent: `${backers}` }, 0)
       .add({ targets: percentageBar, width: `${percentage}%` }, 0);
-    observer.unobserve(target)
+    observer.unobserve(target);
   }
 };
 let target = document.querySelector(".campaignDetails");
