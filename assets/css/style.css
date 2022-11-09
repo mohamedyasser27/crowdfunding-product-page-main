@@ -1,6 +1,6 @@
 :root {
-  --Moderate_cyan: hsl(176, 50%, 47%);
-  --Dark_cyan: hsl(176, 72%, 28%);
+  --Moderate_cyan: #3cb4ac;
+  --Dark_cyan: #147b74;
   --Black: hsl(0, 0%, 0%);
   --Dark_gray: hsl(0, 0%, 48%);
 }
@@ -9,7 +9,6 @@ html {
   box-sizing: border-box;
   height: 100%;
   scroll-behavior: smooth;
-
 }
 *,
 *:before,
@@ -46,6 +45,7 @@ hr {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .invisible {
@@ -80,7 +80,8 @@ hr {
 }
 
 .projectBrief,
-.campaignDetails {
+.campaignDetails,
+.aboutProject {
   background-color: #fff;
   border-radius: 10px;
   max-width: 720px;
@@ -88,6 +89,7 @@ hr {
   margin: 0 auto;
   margin-bottom: 50px;
   transform: translateY(-50px);
+  padding:50px 50px;
 }
 
 /**navbar*/
@@ -116,6 +118,22 @@ nav .content {
 .navBtn {
   color: #fff;
   margin-left: 30px;
+  position: relative;
+}
+
+.navBtn::after {
+  background-color: #fff;
+  content: "";
+  width: 0;
+  height: 1px;
+  position: absolute;
+  bottom: -3px;
+  left: 0px;
+  transition: width 250ms 0s ease-out;
+}
+
+.navBtn:hover::after {
+  width: 100%;
 }
 
 .openMenuBtn,
@@ -148,9 +166,13 @@ nav .content {
 
 /**project brief*/
 
+.projectBrief{
+  --top_padding:0px;
+  padding-top: var(--top_padding);
+}
+
 .projectBrief .content {
-  width: 90%;
-  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -158,12 +180,11 @@ nav .content {
 .projectName,
 .projectDescription,
 .actionsArea {
-  width: 90%;
   text-align: center;
 }
 
 .companyLogo {
-  transform: translateY(-50%);
+  transform: translateY(calc(-50% - var(--top_padding)));
 }
 
 .projectName {
@@ -180,7 +201,8 @@ nav .content {
   align-items: center;
   justify-content: space-between;
   gap: 5vw;
-  margin: 50px auto;
+  margin-top: 50px;
+  width: 100%;
 }
 
 .backprojectBtn {
@@ -189,10 +211,6 @@ nav .content {
   color: #fff;
   font-weight: 700;
   padding: 1em 2em;
-}
-
-.backprojectBtn:hover {
-  background-color: var(--Dark_cyan);
 }
 
 .bookmarkArea {
@@ -211,6 +229,7 @@ nav .content {
   z-index: 2;
   height: 100%;
 }
+
 .bookmarkIcon path {
   fill: #b1b1b1;
 }
@@ -245,12 +264,11 @@ nav .content {
 /**campaignDetails*/
 
 .campaignDetails {
-  padding: 3em;
 }
 
 .campaignDetails .content {
-  width: 90%;
-  margin: 0 auto;
+  /* width: 90%;
+  margin: 0 auto; */
   display: flex;
   flex-direction: column;
 }
@@ -303,6 +321,108 @@ nav .content {
   height: 100%;
   width: 0;
 }
+
+/**about project and pledge*/
+.aboutProject {
+}
+/* 
+.aboutProject > .content {
+  width: 90%;
+  margin: 0 auto;
+} */
+.productCard >*{
+  margin-bottom: 20px;
+}
+
+
+.aboutProject .heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.productsDecription {
+  color: var(--Dark_gray);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.allProducts {
+  
+}
+
+.productCard {
+  border: 1px #ddd solid;
+  border-radius:5px;
+  padding: 2em;
+}
+
+.productCard:not(:last-child){
+  margin-bottom:25px;
+
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+
+.productName {
+    font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.productPrice {
+  color: var(--Moderate_cyan);
+}
+
+.productDescription {
+ color: var(--Dark_gray);
+  line-height: 1.9;}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+
+.quantityLeft {
+}
+
+.quantityLeft span{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.pledgeBtn {
+    background-color: var(--Moderate_cyan);
+  border-radius: 50px;
+  color: #fff;
+  padding: 1.2em 2em;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pledgeBtn:hover {
+}
+
+.outofStock {
+}
+
+@media only screen and (max-width: 400px) {
+.bottom{
+    flex-direction: column;
+    flex-wrap: initial;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
 
 @media only screen and (max-width: 662px) {
   .projectBrief,
@@ -358,4 +478,6 @@ nav .content {
     transform: initial;
     transform: translateY(10px);
   }
+  /**about project and pledge*/
+  
 }

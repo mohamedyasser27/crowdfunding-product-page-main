@@ -38,13 +38,14 @@ let percentageBar = document.querySelector(".percentageBar");
 let options = {
   root: null,
   rootMargin: "0px",
-  threshold: 0.3,
+  threshold: 0.45,
 };
+
 const callback = function (entries) {
-  if (entries[0].isIntersecting == true) {
+  if (entries[0].isIntersecting) {
     anime
       .timeline({
-        duration: 1000,
+        duration: 1100,
         easing: "cubicBezier(0.000, 0.000, 0.580, 1.000)",
         easing: "linear",
 
@@ -53,6 +54,7 @@ const callback = function (entries) {
       .add({ targets: moneyCount, textContent: `$${[pledges]}` }, 0)
       .add({ targets: backersCount, textContent: `${backers}` }, 0)
       .add({ targets: percentageBar, width: `${percentage}%` }, 0);
+    observer.unobserve(target)
   }
 };
 let target = document.querySelector(".campaignDetails");
