@@ -95,13 +95,171 @@ hr {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
 }
 
-
 .invisible {
   display: none !important;
 }
 
+/**selection modal*/
+.select-product-modal {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0px 0px 0px 2000px rgba(0, 0, 0, 0.75);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modal__close-btn {
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+.select-product-modal__heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.select-product-modal__description {
+  color: var(--Dark_gray);
+  margin-bottom: 25px;
+}
+
+.purchasing-product-card {
+  border: 1px #ddd solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.purchasing-product-card {
+  margin-bottom: 20px;
+}
+
+.purchasing-product-card__details {
+  padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.purchasing-product-card__top {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.purchasing-product-card__info {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.purchasing-product-card__heading {
+  font-weight: 700;
+}
+
+.purchasing-product-card__minimum-cost {
+  color: var(--Moderate_cyan);
+}
+
+.purchasing-product-card__quantity-left {
+  margin-left: auto;
+}
+.purchasing-product-card__quantity-left span {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.purchasing-product-card__description {
+  color: var(--Dark_gray);
+  margin-left: 35px;
+}
+
+.purchasing-product-card__payment-section {
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.purchasing-product-card__payment-section > p {
+  color: var(--Dark_gray);
+}
+.inputComponent {
+  position: relative;
+}
+.inputComponent label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-indent: 10px;
+  color: var(--Dark_gray);
+}
+
+
+.payment-section__data-entry {
+  
+  margin-left: auto;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+
+}
+.payment-section__moneyInput {
+  border-radius: 50px;
+  border: 1px #ccc solid;
+  flex-basis: 200px;
+  flex-grow: 0;
+  appearance: textfield;
+  width: 100%;
+  max-width: 100px;
+  padding: 12px;
+  text-indent: 10px;
+}
+
+.select-product-btn {
+  appearance: none;
+  border: 1px #ddd solid;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.select-product-btn:checked::after {
+  content: "";
+  background-color: var(--Moderate_cyan);
+  border-radius: 50%;
+  display: block;
+  width: 13px;
+  height: 13px;
+}
+
+.select-product-btn:focus {
+  outline: none;
+}
+*/
+
+
 /**complete-payment*/
-.done-payment {
+.success-payment {
   background-color: #fff;
   border-radius: 10px;
   padding: 50px;
@@ -122,12 +280,12 @@ hr {
   text-align: center;
   gap: 30px;
 }
-.done-payment__thank-you {
+.success-payment__thank-you {
   font-weight: 700;
   font-size: 2rem;
 }
 
-.done-payment__final-words {
+.success-payment__final-words {
   color: var(--Dark_gray);
 }
 
@@ -368,15 +526,14 @@ hr {
 
 /**about project and pledge*/
 
-.available-products__heading{
+.available-products__heading {
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 50px;
 }
-.available-products__description{
+.available-products__description {
   color: var(--Dark_gray);
   margin-bottom: 50px;
-
 }
 
 .product-card > * {
@@ -433,7 +590,7 @@ hr {
 }
 
 @media only screen and (max-width: 600px) {
-    .main-nav {
+  .main-nav {
     background-image: url("../images/image-hero-mobile.webp");
     background-size: cover;
     background-size: 100% 100%;
@@ -444,12 +601,15 @@ hr {
   .campaign-card,
   .project-card,
   .purchase-area,
-  .available-products {
-    max-width: 90%;
+  .available-products,
+  .select-product-modal {
+    max-width: 95%;
   }
+.purchasing-product-card__description {
+margin-left: 0px;
+}
 
   /**navbar*/
-
 
   .main-nav .content {
     padding-top: 30px;
@@ -496,8 +656,11 @@ hr {
   /**about project and pledge*/
 
   /**Modal*/
-  .backersLeft {
+  .purchasing-product-card__quantity-left {
     order: 4;
     margin-left: 0px;
+  }
+  .payment-section__data-entry {
+    margin-left: initial;
   }
 }
