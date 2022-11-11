@@ -25,50 +25,66 @@
   <body>
     <main>
       <div class="cover invisible"></div>
-      <nav>
+  
+            
+      <section class="done-payment invisible">
+        <img src="./assets/images/icon-check.svg" alt="" />
+        <p class="done-payment__thank-you">Thanks for your support!</p>
+        <p class="done-payment__final-words">
+          Your pledge brings us one step closer to sharing Mastercraft Bamboo
+          Monitor Riser worldwide. You will get an email once our campaign is
+          completed.
+        </p>
+        <button class="btn btn--primary finish-btn">Got it!</button>
+      </section>
+      <header class="main-nav">
         <section class="content">
-          <img src="./assets/images/logo.svg" alt="logo" class="logo" />
-          <section class="navBtnsContainer">
-            <button class="resetBtnStyle navBtn">About</button>
-            <button class="resetBtnStyle navBtn">Discover</button>
-            <button class="resetBtnStyle navBtn">Get Started</button>
+          <img
+            src="./assets/images/logo.svg"
+            alt="logo"
+            class="main-nav__siteLogo"
+          />
+          <section class="main-nav__list">
+            <button class="btn main-nav__item">About</button>
+            <button class="btn main-nav__item">Discover</button>
+            <button class="btn main-nav__item">Get Started</button>
           </section>
-          <section class="invisible sideMenuBtnsContainer">
-            <button class="resetBtnStyle sideMenuBtn">About</button>
+          <section class="invisible side-menu">
+            <button class="btn side-menu__item">About</button>
             <hr />
-            <button class="resetBtnStyle sideMenuBtn">Discover</button>
+            <button class="btn side-menu__item">Discover</button>
             <hr />
-            <button class="resetBtnStyle sideMenuBtn">Get Started</button>
+            <button class="btn side-menu__item">Get Started</button>
           </section>
-          <button class="resetBtnStyle openMenuBtn">
+          <button class="btn side-menu__open-btn">
             <img src="./assets/images/icon-hamburger.svg" alt="open menu btn" />
           </button>
-          <button class="resetBtnStyle closeMenuBtn invisible">
+          <button class="btn side-menu__close-btn invisible">
             <img
               src="./assets/images/icon-close-menu.svg"
               alt="close menu btn"
             />
           </button>
         </section>
-      </nav>
-      <section class="projectBrief">
+      </header>
+      <section class="project-card">
         <section class="content">
           <img
             src="./assets/images/logo-mastercraft.svg"
             alt="company logo"
-            class="companyLogo"
+            class="project-card__logo"
           />
-          <p class="projectName">Mastercraft Bamboo Monitor Riser</p>
-          <p class="projectDescription">
+          <p class="project-card__title">Mastercraft Bamboo Monitor Riser</p>
+          <p class="project-card__description">
             A beautiful & handcrafted monitor stand to reduce neck and eye
             strain.
           </p>
-          <section class="actionsArea">
-            <button class="resetBtnStyle backprojectBtn">
+          <section class="project-card__action-area">
+            <button class="btn btn--primary project-card__back-project-btn">
               Back This Project
             </button>
-            <section class="bookmarkArea">
-              <button class="resetBtnStyle bookmarkBtn">
+            <section class="project-card__bookmark-area">
+              <button class="btn bookmark-area__bookmark-btn">
                 <svg
                   class="bookmarkIcon"
                   width="56"
@@ -77,45 +93,42 @@
                 >
                   <g fill="none" fill-rule="evenodd">
                     <circle fill="currentcolor" cx="28" cy="28" r="28" />
-                    <path
-                      fill="currentcolor"
-                      d="M23 19v18l5-5.058L33 37V19z"
-                    />
+                    <path fill="currentcolor" d="M23 19v18l5-5.058L33 37V19z" />
                   </g>
                 </svg>
               </button>
-              <p class="bookmarkStatus">bookmark</p>
+              <p class="bookmark-area__bookmark-status">bookmark</p>
             </section>
           </section>
         </section>
       </section>
-
-      <section class="campaignDetails">
+      <section class="campaign-card">
         <div class="content">
-          <section class="allMetrics">
-            <article class="metric moneyCount">
-              <article class="currentAmount">$0</article>
-              <article class="extraInfo">of $100,000 backed</article>
+          <section class="campaign-card__counters">
+            <article class="campaign-card__counter card__counter--money">
+              <article class="counter__currentAmount">$0</article>
+              <article class="counter__extra-info">of $100,000 backed</article>
             </article>
-            <article class="metric backersCount">
-              <article class="currentAmount">0</article>
-              <article class="extraInfo">total backers</article>
+            <article
+              class="campaign-card__counter card__counter--backers-count"
+            >
+              <article class="counter__currentAmount">0</article>
+              <article class="counter__extra-info">total backers</article>
             </article>
-            <article class="metric daysleftCount">
-              <article class="currentAmount">56</article>
-              <article class="extraInfo">days left</article>
+            <article class="campaign-card__counter card__counter--days-left">
+              <article class="counter__currentAmount">56</article>
+              <article class="counter__extra-info">days left</article>
             </article>
           </section>
-          <section class="progressBar">
-            <div class="percentageBar"></div>
+          <section class="campaign-card__progress-bar">
+            <div class="progress-bar__done-progress"></div>
           </section>
         </div>
       </section>
-
-      <section class="aboutProject">
+      <section class="available-products">
         <div class="content">
-          <p class="heading">About this project</p>
-          <p class="productsDecription">
+          <p class="available-products__heading">About this project</p>
+          <p class="available-products__description">
             The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
             platform that elevates your screen to a more comfortable viewing
             height. Placing your monitor at eye level has the potential to
@@ -126,50 +139,58 @@
             extra desk space below your computer to allow notepads, pens, and
             USB sticks to be stored under the stand.
           </p>
-          <section class="allProducts">
-            <article class="productCard">
-              <div class="top">
-                <p class="productName">Bamboo Stand</p>
-                <p class="productPrice">Pledge $25 or more</p>
+          <section class="available-products__allProducts">
+            <article class="product-card">
+              <div class="product-card__details">
+                <p class="product-card__product-title">Bamboo Stand</p>
+                <p class="product-card__product-price">Pledge $25 or more</p>
               </div>
-              <p class="productDescription">
+              <p class="product-card__product-description">
                 You get an ergonomic stand made of natural bamboo. You've helped
-                us launch our promotional campaign, and you’ll be added to a
+                us launch our promotional campaign, and you'll be added to a
                 special Backer member list.
               </p>
-              <div class="bottom">
-                <p class="quantityLeft"><span>101 </span>left</p>
-                <button class="resetBtnStyle pledgeBtn">Select Reward</button>
+              <div class="product-card__select-product-area">
+                <p class="product-card__quantity-left"><span>101 </span>left</p>
+                <button class="btn btn--primary product-card__select-btn">
+                  Select Reward
+                </button>
               </div>
             </article>
-            <article class="productCard">
-              <div class="top">
-                <p class="productName">Black Edition Stand</p>
-                <p class="productPrice">Pledge $75 or more</p>
+            <article class="product-card">
+              <div class="product-card__details">
+                <p class="product-card__product-title">Black Edition Stand</p>
+                <p class="product-card__product-price">Pledge $75 or more</p>
               </div>
-              <p class="productDescription">
+              <p class="product-card__product-description">
                 You get a Black Special Edition computer stand and a personal
                 thank you. You'll be added to our Backer member list. Shipping
                 is included.
               </p>
-              <div class="bottom">
-                <p class="quantityLeft"><span>64 </span>left</p>
-                <button class="resetBtnStyle pledgeBtn">Select Reward</button>
+              <div class="product-card__select-product-area">
+                <p class="product-card__quantity-left"><span>64 </span>left</p>
+                <button class="btn btn--primary product-card__select-btn">
+                  Select Reward
+                </button>
               </div>
             </article>
-            <article class="productCard outofStock">
-              <div class="top">
-                <p class="productName">Mahogany Special Edition</p>
-                <p class="productPrice">Pledge $200 or more</p>
+            <article class="product-card product-card--unavailable">
+              <div class="product-card__details">
+                <p class="product-card__product-title">
+                  Mahogany Special Edition
+                </p>
+                <p class="product-card__product-price">Pledge $200 or more</p>
               </div>
-              <p class="productDescription">
+              <p class="product-card__product-description">
                 You get two Special Edition Mahogany stands, a Backer T-Shirt,
                 and a personal thank you. You'll be added to our Backer member
                 list. Shipping is included.
               </p>
-              <div class="bottom">
-                <p class="quantityLeft"><span>0 </span>left</p>
-                <button class="resetBtnStyle pledgeBtn">Out of Stock</button>
+              <div class="product-card__select-product-area">
+                <p class="product-card__quantity-left"><span>0 </span>left</p>
+                <button class="product-card__select-btn btn btn--unavailable">
+                  Out of Stock
+                </button>
               </div>
             </article>
           </section>
