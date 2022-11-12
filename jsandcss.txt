@@ -1,4 +1,0 @@
-  <link rel="stylesheet" href="./assets/css/normalize.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <script src="/getAllClasses.js" defer></script>
-    <script src="./index.js" defer></script>
