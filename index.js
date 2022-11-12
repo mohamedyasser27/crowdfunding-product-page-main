@@ -40,6 +40,13 @@ const DomManipulation = (function () {
     ".card__counter--backers-count .counter__currentAmount"
   );
 
+  let successPaymentWindow = document.querySelector(".success-payment");
+  console.log(successPaymentWindow);
+
+  let closeThankyouWindowBtn = document.querySelector(
+    ".success-payment .finish-btn"
+  );
+
   productCards.forEach((card) => {
     card.addEventListener("click", () => {
       selectProductCardEventHandler(card.classList[1]);
@@ -125,9 +132,14 @@ const DomManipulation = (function () {
           btn.parentElement.parentElement.parentElement.classList[1]
         );
         btn.previousElementSibling.classList.remove("wrongAmount");
+        successPaymentWindow.classList.toggle("invisible");
       }
-      AnimateCampaignCard();
+
     });
+  });
+  closeThankyouWindowBtn.addEventListener("click", () => {
+    successPaymentWindow.classList.add("invisible");
+    AnimateCampaignCard();
   });
 })();
 

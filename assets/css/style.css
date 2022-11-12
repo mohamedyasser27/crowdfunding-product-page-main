@@ -268,9 +268,6 @@ hr {
 .select-product-checkbox:focus {
   outline: none;
 }
-*/
-
-
 /**complete-payment*/
 .success-payment {
   background-color: #fff;
@@ -285,14 +282,13 @@ hr {
   left: 50%;
   box-shadow: 0px 0px 0px 2000px rgba(0, 0, 0, 0.75);
   transform: translateX(-50%);
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   text-align: center;
   gap: 30px;
 }
+
 .success-payment__thank-you {
   font-weight: 700;
   font-size: 2rem;
