@@ -25,28 +25,28 @@
   <body>
     <main>
       <div class="cover invisible"></div>
-      <section class="select-product-modal">
+      <section class="select-product-modal invisible">
         <button class="btn modal__close-btn">
           <img
             src="./assets/images/icon-close-modal.svg"
             alt="close modal button"
           />
         </button>
-        <!-- <p class="select-product-modal__heading">Back this project</p>
-        <p class="select-product-modal__description">
-          Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
-          the world?
-        </p> -->
-
         <section class="product-selection">
-          <article class="purchasing-product-card">
+          <p class="select-product-modal__heading">Back this project</p>
+          <p class="select-product-modal__description">
+            Want to support us in bringing Mastercraft Bamboo Monitor Riser out
+            in the world?
+          </p>
+          <article class="purchasing-product-card noRewards">
             <div class="purchasing-product-card__details">
               <div class="purchasing-product-card__top">
                 <input
                   type="radio"
                   name="productType"
-                  class="select-product-btn"
+                  class="select-product-checkbox"
                   id="MahoganySpecialEdition"
+                  autocomplete="off"
                 />
                 <div class="purchasing-product-card__info">
                   <p class="purchasing-product-card__heading">
@@ -71,6 +71,7 @@
 
                   <input
                     class="payment-section__moneyInput"
+                    autocomplete="off"
                     type="number"
                     name="Amountpaid"
                     id="pledge0"
@@ -85,14 +86,15 @@
               </div>
             </div>
           </article>
-          <article class="purchasing-product-card">
+          <article class="purchasing-product-card BambooStand">
             <div class="purchasing-product-card__details">
               <div class="purchasing-product-card__top">
                 <input
                   type="radio"
                   name="productType"
-                  class="select-product-btn"
+                  class="select-product-checkbox"
                   id="MahoganySpecialEdition"
+                  autocomplete="off"
                 />
                 <div class="purchasing-product-card__info">
                   <p class="purchasing-product-card__heading">Bamboo Stand</p>
@@ -119,6 +121,7 @@
 
                   <input
                     class="payment-section__moneyInput"
+                    autocomplete="off"
                     type="number"
                     name="Amountpaid"
                     id="pledge25"
@@ -133,14 +136,15 @@
               </div>
             </div>
           </article>
-          <article class="purchasing-product-card">
+          <article class="purchasing-product-card BlackEditionStand">
             <div class="purchasing-product-card__details">
               <div class="purchasing-product-card__top">
                 <input
                   type="radio"
                   name="productType"
-                  class="select-product-btn"
+                  class="select-product-checkbox"
                   id="MahoganySpecialEdition"
+                  autocomplete="off"
                 />
                 <div class="purchasing-product-card__info">
                   <p class="purchasing-product-card__heading">
@@ -169,6 +173,7 @@
 
                   <input
                     class="payment-section__moneyInput"
+                    autocomplete="off"
                     type="number"
                     name="Amountpaid"
                     id="pledge75"
@@ -183,14 +188,17 @@
               </div>
             </div>
           </article>
-          <article class="purchasing-product-card">
+          <article class="purchasing-product-card MahoganySpecialEdition purchasing-product-card--unavailable">
             <div class="purchasing-product-card__details">
               <div class="purchasing-product-card__top">
                 <input
                   type="radio"
                   name="productType"
-                  class="select-product-btn"
+                  class="select-product-checkbox"
+                  autocomplete="off"
                   id="MahoganySpecialEdition"
+                  disabled
+
                 />
                 <div class="purchasing-product-card__info">
                   <p class="purchasing-product-card__heading">
@@ -220,6 +228,7 @@
 
                   <input
                     class="payment-section__moneyInput"
+                    autocomplete="off"
                     type="number"
                     name="Amountpaid"
                     id="pledge200"
@@ -227,6 +236,7 @@
                 </div>
 
                 <button
+                  disabled
                   class="btn btn--primary payment-section__finish-payment-btn"
                 >
                   coninue
@@ -316,8 +326,8 @@
         <div class="content">
           <section class="campaign-card__counters">
             <article class="campaign-card__counter card__counter--money">
-              <article class="counter__currentAmount">$0</article>
-              <article class="counter__extra-info">of $100,000 backed</article>
+              <article class="counter__currentAmount">$<span></span></article>
+              <article class="counter__extra-info">of $100,000</article>
             </article>
             <article
               class="campaign-card__counter card__counter--backers-count"
@@ -350,7 +360,7 @@
             USB sticks to be stored under the stand.
           </p>
           <section class="available-products__allProducts">
-            <article class="product-card">
+            <article class="product-card BambooStand">
               <div class="product-card__details">
                 <p class="product-card__product-title">Bamboo Stand</p>
                 <p class="product-card__product-price">Pledge $25 or more</p>
@@ -367,7 +377,7 @@
                 </button>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card BlackEditionStand">
               <div class="product-card__details">
                 <p class="product-card__product-title">Black Edition Stand</p>
                 <p class="product-card__product-price">Pledge $75 or more</p>
@@ -384,7 +394,9 @@
                 </button>
               </div>
             </article>
-            <article class="product-card product-card--unavailable">
+            <article
+              class="product-card MahoganySpecialEdition product-card--unavailable"
+            >
               <div class="product-card__details">
                 <p class="product-card__product-title">
                   Mahogany Special Edition
@@ -398,7 +410,10 @@
               </p>
               <div class="product-card__select-product-area">
                 <p class="product-card__quantity-left"><span>0 </span>left</p>
-                <button class="product-card__select-btn btn btn--unavailable">
+                <button
+                  disabled
+                  class="product-card__select-btn btn btn--unavailable"
+                >
                   Out of Stock
                 </button>
               </div>
@@ -409,5 +424,4 @@
     </main>
   </body>
 </html>
-<script src="/getAllClasses.js" defer></script>
 <script src="./index.js" type="module" defer></script>

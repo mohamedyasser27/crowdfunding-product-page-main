@@ -1,103 +1,181 @@
 import anime from "./anime.es.js";
+let totalNeededPleges = 100000;
+let currentPledges = 89914;
+let totalBackers = 5007;
+let donePledgesPercentage = (currentPledges / totalNeededPleges) * 100;
+let bookmarkStatus = false;
+let checkedProjectCache = null;
 
 const DomManipulation = (function () {
-  let bookmarked = false;
   const sideMenuOpenBtn = document.querySelector(".side-menu__open-btn");
   const sideMenuCloseBtn = document.querySelector(".side-menu__close-btn");
   const sideMenu = document.querySelector(".side-menu");
-  let bookmarkStatus = document.querySelector(
+  const bookmarkStatusElement = document.querySelector(
     ".bookmark-area__bookmark-status"
   );
   const cover = document.querySelector(".cover");
-  let projectCardBookmarkBtn = document.querySelector(
+  const projectCardBookmarkBtn = document.querySelector(
     ".bookmark-area__bookmark-btn"
   );
-  const openSideMenuEventHandler = () => {
-    cover.classList.toggle("invisible");
-    sideMenu.classList.toggle("invisible");
-    sideMenuOpenBtn.classList.toggle("invisible");
-    sideMenuCloseBtn.classList.toggle("invisible");
-  };
+  const backProjectBtn = document.querySelector(
+    ".project-card__back-project-btn"
+  );
+  const selectProductModal = document.querySelector(".select-product-modal");
+  const modalCloseBtn = document.querySelector(".modal__close-btn");
+  const productCardSelectBtns = Array.from(
+    document.querySelectorAll(".product-card__select-btn")
+  );
+  const productCards = Array.from(
+    document.querySelectorAll(".purchasing-product-card")
+  );
 
-  sideMenuOpenBtn.addEventListener("click", openSideMenuEventHandler);
-  sideMenuCloseBtn.addEventListener("click", openSideMenuEventHandler);
+  const finishPaymentBtns = Array.from(
+    document.querySelectorAll(".payment-section__finish-payment-btn")
+  );
+  const totalMoneyCount = document.querySelector(
+    ".card__counter--money .counter__currentAmount span"
+  );
 
-  projectCardBookmarkBtn.addEventListener("click", () => {
-    projectCardBookmarkBtn.classList.toggle("bookmarked");
-    bookmarkStatus.textContent = bookmarked ? "bookmark" : "bookmarked";
-    bookmarked = !bookmarked;
+  const totalBackersCount = document.querySelector(
+    ".card__counter--backers-count .counter__currentAmount"
+  );
+
+  productCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      selectProductCardEventHandler(card.classList[1]);
+    });
   });
 
-  // let product-selection__close-btn = document.querySelector(".product-selection__close-btn");
-  // let product-selection = document.querySelector(".product-selection");
-  // product-selection__close-btn.addEventListener("click", () => {
-  //   product-selection.classList.add("invisible");
-  // });
+  const selectProductCardEventHandler = (cardName) => {
+    let card = document.querySelector(`.${cardName}`);
+    if (!card.classList.contains("purchasing-product-card--unavailable")) {
+      if (checkedProjectCache == null) {
+        checkedProjectCache = card;
+      } else {
+        checkedProjectCache.classList.toggle("selected");
+        checkedProjectCache.querySelector("input").checked = true;
+      }
 
-  // let allProudctsItems = Array.from(
-  //   document.querySelectorAll(".product-selection .available-products__description .product")
-  // );
+      card.querySelector("input").checked = true;
+      card.classList.toggle("selected");
+      checkedProjectCache = card;
+    }
+  };
+  const toggleSelectProductModal = () => {
+    selectProductModal.classList.toggle("invisible");
+  };
+  const toggleSideMenuEventHandler = () => {
+    cover.classList.toggle("invisible");
+    sideMenu.classList.toggle("invisible");
+    sideMenuCloseBtn.classList.toggle("invisible");
+    sideMenuOpenBtn.classList.toggle("invisible");
+  };
+  const toggleBookmarkStatusHandler = () => {
+    bookmarkStatusElement.textContent = bookmarkStatus
+      ? "bookmark"
+      : "bookmarked";
 
-  // let lastChecked = null;
-  // allProudctsItems.forEach((product) => {
-  //   product.addEventListener("click", function () {
-  //     this.children[0].children[0].checked = true;
-  //     this.classList.add("checked");
-  //     if (lastChecked != null) {
-  //       lastChecked.classList.remove("checked");
-  //       lastChecked = this;
-  //     } else {
-  //       lastChecked = this;
-  //     }
-  //   });
-  // });
+    bookmarkStatus = !bookmarkStatus;
+    if (bookmarkStatus) {
+      projectCardBookmarkBtn.classList.add("bookmarked");
+    } else {
+      projectCardBookmarkBtn.classList.remove("bookmarked");
+    }
+  };
+  const addPledgeEventHandler = (pledgeAmount, specificProductName) => {
+    let quantityLeftElement = Array.from(
+      document.querySelectorAll(`.${specificProductName} span`)
+    );
+    quantityLeftElement.forEach((ele) => {
+      ele.textContent = `${ele.textContent - 1} `;
+    });
+    totalBackers++;
+    currentPledges += Number(pledgeAmount);
+    totalBackersCount.textContent = totalBackers;
+    totalMoneyCount.textContent = currentPledges;
+    donePledgesPercentage = (currentPledges / totalNeededPleges) * 100;
+  };
 
-  // console.log(allProudctsItems);
+  sideMenuOpenBtn.addEventListener("click", toggleSideMenuEventHandler);
+  sideMenuCloseBtn.addEventListener("click", toggleSideMenuEventHandler);
+
+  projectCardBookmarkBtn.addEventListener("click", toggleBookmarkStatusHandler);
+
+  modalCloseBtn.addEventListener("click", toggleSelectProductModal);
+  backProjectBtn.addEventListener("click", toggleSelectProductModal);
+  productCardSelectBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      toggleSelectProductModal();
+      selectProductCardEventHandler(
+        btn.parentElement.parentElement.classList[1]
+      );
+    });
+  });
+
+  finishPaymentBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let moneyAmountInput =
+        btn.previousElementSibling.querySelector("input").value;
+      if (moneyAmountInput == "") {
+        btn.previousElementSibling.classList.add("wrongAmount");
+      } else {
+        toggleSelectProductModal();
+        addPledgeEventHandler(
+          moneyAmountInput,
+          btn.parentElement.parentElement.parentElement.classList[1]
+        );
+        btn.previousElementSibling.classList.remove("wrongAmount");
+      }
+      AnimateCampaignCard();
+    });
+  });
 })();
 
-let val = 100000;
-let pledges = 89914;
-let backers = 5007;
-let daysLeft = 56;
-let remaining = val - pledges;
-let percentage = (pledges / val) * 100;
+function AnimateCampaignCard() {
+  let moneyCount = document.querySelector(
+    ".card__counter--money .counter__currentAmount span"
+  );
+  moneyCount.textContent = 0;
+  let backersCount = document.querySelector(
+    ".card__counter--backers-count .counter__currentAmount"
+  );
+  backersCount.textContent = 0;
 
-let moneyCount = document.querySelector(
-  ".card__counter--money .counter__currentAmount"
-);
-let backersCount = document.querySelector(
-  ".card__counter--backers-count .counter__currentAmount"
-);
-let percentageBar = document.querySelector(".progress-bar__done-progress");
+  let percentageBar = document.querySelector(".progress-bar__done-progress");
+  percentageBar.style.width = 0;
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.45,
+  };
 
-let options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.45,
-};
+  const callback = function (entries) {
+    if (entries[0].isIntersecting) {
+      anime
+        .timeline({
+          duration: 1100,
+          easing: "cubicBezier(0.000, 0.000, 0.580, 1.000)",
+          easing: "linear",
 
-const callback = function (entries) {
-  if (entries[0].isIntersecting) {
-    anime
-      .timeline({
-        duration: 1100,
-        easing: "cubicBezier(0.000, 0.000, 0.580, 1.000)",
-        easing: "linear",
+          round: 1,
+        })
+        .add({ targets: moneyCount, textContent: `${[currentPledges]}` }, 0)
+        .add({ targets: backersCount, textContent: `${totalBackers}` }, 0)
+        .add(
+          {
+            targets: percentageBar,
+            width: `${
+              donePledgesPercentage > 100 ? 100 : donePledgesPercentage
+            }%`,
+          },
+          0
+        );
+      observer.unobserve(target);
+    }
+  };
+  let target = document.querySelector(".campaign-card");
+  let observer = new IntersectionObserver(callback, options);
+  observer.observe(target);
+}
 
-        round: 1,
-      })
-      .add({ targets: moneyCount, textContent: `$${[pledges]}` }, 0)
-      .add({ targets: backersCount, textContent: `${backers}` }, 0)
-      .add({ targets: percentageBar, width: `${percentage}%` }, 0);
-    observer.unobserve(target);
-  }
-};
-let target = document.querySelector(".campaign-card");
-let observer = new IntersectionObserver(callback, options);
-observer.observe(target);
-
-/**
- * 1)
- *
- *
- */
+AnimateCampaignCard();

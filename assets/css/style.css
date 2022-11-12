@@ -103,7 +103,7 @@ hr {
 .select-product-modal {
   background-color: #fff;
   border-radius: 10px;
-  padding: 25px;
+  padding: 50px;
   max-width: 720px;
   width: 100%;
   margin: 0 auto;
@@ -139,12 +139,19 @@ hr {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-}
-.purchasing-product-card {
   margin-bottom: 20px;
 }
 
+.purchasing-product-card--unavailable {
+  filter: opacity(0.5);
+}
+
+.purchasing-product-card.selected {
+  border-color: var(--Moderate_cyan);
+}
+
 .purchasing-product-card__details {
+  cursor: pointer;
   padding: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -198,6 +205,11 @@ hr {
 .inputComponent {
   position: relative;
 }
+
+.inputComponent.wrongAmount .payment-section__moneyInput {
+  border-color: red;
+}
+
 .inputComponent label {
   position: absolute;
   top: 50%;
@@ -206,9 +218,7 @@ hr {
   color: var(--Dark_gray);
 }
 
-
 .payment-section__data-entry {
-  
   margin-left: auto;
   max-width: 100%;
   display: flex;
@@ -216,7 +226,6 @@ hr {
   justify-content: center;
   gap: 5px;
   flex-wrap: wrap;
-
 }
 .payment-section__moneyInput {
   border-radius: 50px;
@@ -230,7 +239,11 @@ hr {
   text-indent: 10px;
 }
 
-.select-product-btn {
+.payment-section__moneyInput:focus {
+  outline: none;
+}
+
+.select-product-checkbox {
   appearance: none;
   border: 1px #ddd solid;
   border-radius: 50%;
@@ -243,7 +256,7 @@ hr {
   flex-shrink: 0;
 }
 
-.select-product-btn:checked::after {
+.select-product-checkbox:checked::after {
   content: "";
   background-color: var(--Moderate_cyan);
   border-radius: 50%;
@@ -252,7 +265,7 @@ hr {
   height: 13px;
 }
 
-.select-product-btn:focus {
+.select-product-checkbox:focus {
   outline: none;
 }
 */
@@ -605,9 +618,9 @@ hr {
   .select-product-modal {
     max-width: 95%;
   }
-.purchasing-product-card__description {
-margin-left: 0px;
-}
+  .purchasing-product-card__description {
+    margin-left: 0px;
+  }
 
   /**navbar*/
 
