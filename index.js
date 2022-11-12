@@ -70,6 +70,9 @@ const DomManipulation = (function () {
   };
   const toggleSelectProductModal = () => {
     selectProductModal.classList.toggle("invisible");
+    window.location =
+      ("" + window.location).replace(/#[A-Za-z0-9_]*$/, "") +
+      "#selectionWindow";
   };
   const toggleSideMenuEventHandler = () => {
     cover.classList.toggle("invisible");
@@ -134,7 +137,9 @@ const DomManipulation = (function () {
         btn.previousElementSibling.classList.remove("wrongAmount");
         successPaymentWindow.classList.toggle("invisible");
       }
-
+      window.location =
+        ("" + window.location).replace(/#[A-Za-z0-9_]*$/, "") +
+        "#successWindow";
     });
   });
   closeThankyouWindowBtn.addEventListener("click", () => {
